@@ -1,0 +1,72 @@
+name: Update HOOD quote
+
+# Pulls the HOOD quote from the Nasdaq official API every 15 minutes during
+# NYSE trading hours and commits it as quote.json, so the static page
+# can serve fresh quotes same-origin (no client-side cross-border fetch).
+# Client-side fallback chain (in-page): quote.json -> Nasdaq direct ->
+# Yahoo Finance -> Stooq (hood.us).
+on:
+  schedule:
+    # 13:00-21:00 UTC covers 09:30-17:00 ET in EDT and 08:00-16:00 ET in EST, Mon-Fri
+    - cron: '*/15 13-21 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  quote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch quote from Nasdaq
+        run: |
+          set -euo pipefail
+          python3 - <<'EOF'
+          import json, urllib.request, datetime
+          from zoneinfo import ZoneInfo
+          req = urllib.request.Request(
+              "https://api.nasdaq.com/api/quote/HOOD/info?assetclass=stocks",
+              headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64)",
+                       "Accept": "application/json"})
+          with urllib.request.urlopen(req, timeout=25) as r:
+              payload = json.load(r)
+          pd = payload["data"]["primaryData"]
+          def num(s):
+              return float(str(s).replace("$", "").replace(",", "")
+                           .replace("%", "").strip())
+          price = num(pd["lastSalePrice"])
+          net = num(pd["netChange"])
+          pct = num(pd["percentageChange"])
+          prev = round(price - net, 2)
+          # ET wall clock via zoneinfo: correct across EDT/EST transitions
+          et_now = datetime.datetime.now(ZoneInfo("America/New_York"))
+          hm = et_now.hour * 60 + et_now.minute
+          status = "intraday" if 570 <= hm < 960 else "postmarket"
+          out = {
+              "symbol": "HOOD",
+              "price": round(price, 2),
+              "netChange": round(net, 2),
+              "pctChange": round(pct, 2),
+              "prevClose": prev,
+              "quoteTime": et_now.strftime("%Y-%m-%d %H:%M"),
+              "status": status,
+              "source": "Nasdaq",
+          }
+          with open("quote.json", "w") as f:
+              json.dump(out, f)
+          print(json.dumps(out))
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add quote.json
+          if git diff --cached --quiet; then
+            echo "Quote unchanged, nothing to commit."
+          else
+            git commit -m "Update HOOD quote snapshot"
+            git push
+          fi
