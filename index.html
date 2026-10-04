@@ -370,7 +370,7 @@
 
     <section class="section" id="options-structure">
       <div class="section-head"><h2>期权结构</h2><span class="section-index">01A / OPTIONS STRUCTURE</span></div>
-      <p style="margin:0 0 12px;font-size:13px;color:var(--muted)">数据截至 2026-10-01 15:55 ET（OptiView 尚未滚动至 10-02，本板块日期保持 2026-10-01），每周更新</p>
+      <p style="margin:0 0 12px;font-size:13px;color:var(--muted)">数据截至 2026-10-02 15:55 ET，每周更新</p>
 
       <div class="panel" style="padding:16px 18px;margin-bottom:12px;border-left:4px solid var(--accent)">
         <div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-bottom:8px">
@@ -381,17 +381,20 @@
       </div>
 
       <div class="data-grid">
-        <div class="datum"><span class="k">净做市商 GEX</span><span class="v pos">正 +$2.77B</span><span class="k">做市商净多 Gamma · OptiView gamma-exposure，2026-10-01 15:55 ET</span></div>
-        <div class="datum"><span class="k">最大 Gamma 集中行权价</span><span class="v">$120</span><span class="k">Gamma 集中度最高 · OptiView gamma-exposure，2026-10-01 15:55 ET</span></div>
+        <div class="datum"><span class="k">净做市商 GEX</span><span class="v pos">正 +$4.29B</span><span class="k">做市商净多 Gamma；最大 Gamma 集中行权价 $120 · OptiView gamma-exposure，2026-10-02 15:55 ET</span></div>
+        <div class="datum"><span class="k">最大 Gamma 集中行权价</span><span class="v">$120</span><span class="k">Gamma 集中度最高 · OptiView gamma-exposure，2026-10-02 15:55 ET</span></div>
         <div class="datum"><span class="k">Call Wall</span><span class="v">$120</span><span class="k">阻力参考 · OptiView open-interest（全期限）</span></div>
         <div class="datum"><span class="k">Put Wall</span><span class="v">$100</span><span class="k">支撑参考 · OptiView open-interest（全期限）</span></div>
-        <div class="datum"><span class="k">Max Pain</span><span class="v">$100</span><span class="k">做市商对冲参考位 · OptiView open-interest（全期限）</span></div>
-        <div class="datum"><span class="k">Put-Call 未平仓比</span><span class="v">0.68</span><span class="k">Call 1,056,102 张／Put 721,734 张，Call-heavy · OptiView open-interest</span></div>
-        <div class="datum"><span class="k">30 天 ATM IV / IV Rank</span><span class="v">53.0% <small>Rank 42</small></span><span class="k">IV Rank 42 / 100 · OptiView</span></div>
-        <div class="datum"><span class="k">期权隐含预期波幅</span><span class="v">±$8.72</span><span class="k">±7.8% · OptiView，2026-10-01 15:55 ET</span></div>
+        <div class="datum"><span class="k">Max Pain（全部到期日口径）</span><span class="v">$100</span><span class="k">距 10/2 收盘 −11.3% · 做市商对冲参考位 · OptiView open-interest（全期限），2026-10-02</span></div>
+        <div class="datum"><span class="k">Put-Call 未平仓比</span><span class="v">0.68</span><span class="k">Call 未平仓 1,078,624 张／Put 未平仓 731,596 张，Call-heavy · OptiView open-interest，2026-10-02</span></div>
+        <div class="datum"><span class="k">30 天 ATM IV / IV Rank</span><span class="v">52.9% <small>Rank 43</small></span><span class="k">IV Rank 43 / 100 · OptiView，2026-10-02</span></div>
+        <div class="datum"><span class="k">期权隐含预期波幅</span><span class="v">±$14.31</span><span class="k">约 ±12.7% · OptiView，2026-10-02</span></div>
       </div>
 
-      <p style="margin:12px 0 0;font-size:12px;color:var(--muted);line-height:1.7">数据来源 OptiView（OPRA 延迟 15 分钟），HOOD 期权数据为 OptiView 单一口径；FlashAlpha 对 HOOD 无数据（页面未渲染、其 API 返回 no_data）。Call/Put Wall 与 Max Pain 为做市商对冲参考位，不构成买卖建议。Gamma Flip 各模型分歧较大，本板块不列固定数值。GEX 正负基于“做市商持有与公开订单流相反头寸”的模型假设；突破 $120 Call Wall 上方、跌破 $100 Put Wall 下方时，做市商对冲行为可能放大波动。</p>
+      <p style="margin:12px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7">现价位置（10/2 收盘 vs Wall）：收盘 $112.74，Call Wall $120 在上方约 6.4%，且 $120 同时是最大 Gamma 集中行权价；Put Wall $100 在下方约 11.3%</p>
+      <p style="margin:6px 0 0;font-size:12.5px;color:var(--muted);line-height:1.7">成交异动（OptiView 2026-10-02）：当日成交最热行权价 $115；全链成交量 / 未平仓量比 0.55</p>
+
+      <p style="margin:12px 0 0;font-size:12px;color:var(--muted);line-height:1.7">数据来源 OptiView（OPRA 延迟 15 分钟），HOOD 期权数据为 OptiView 单一口径；FlashAlpha 对 HOOD 无数据（页面未渲染、其 API 返回 no_data）。Call/Put Wall 与 Max Pain 为做市商对冲参考位，不构成买卖建议。Gamma Flip 各模型分歧较大，本板块不列固定数值。GEX 正负基于“做市商持有与公开订单流相反头寸”的模型假设；突破 $120 Call Wall 上方、跌破 $100 Put Wall 下方时，做市商对冲行为可能放大波动。Max Pain 为全部到期日合约口径，包含远月合约，数值通常低于最近到期口径，两者不可直接比较。</p>
     </section>
 
     <section class="section" id="financials">
@@ -550,9 +553,9 @@
       </article>
     </section>
 
-    <section class="source-note"><strong>研究完整性（数据基准日 2026-10-02，调研日期 2026-10-03）：</strong>图表与图内统计直接按机器可读日收盘序列（Nasdaq 官方历史 API 65 个交易日，2026-07-02 至 2026-10-02）绘制。市值约 $101.4B 为 2026-10-02 收盘口径；52 周区间（Nasdaq $63.52–$153.86 vs OptiView $65.06–$152.46）、做空环比（MarketBeat +1.8% vs Schaeffer's +9.1%）、Goldman Sachs 目标价（$145 vs $142）、Q3 财报日期（MarketBeat 2026-10-27 vs OptiView 2026-11-02，均未获公司确认）等来源分歧均并列标注、不合并为单一确定值；回购约 $664M 为单源未二次核实 ⚠️；MAU 公司未披露，本页以入金客户与投资账户代替、不编造。FINRA 做空为 2026-09-15 结算期，本周无新结算。借券利用率与借券费率无免费公开源，未呈现也未估算。期权结构为 OptiView 单一口径（2026-10-01 15:55 ET 快照，OPRA 延迟数据，来源尚未滚动至 10-02），FlashAlpha 对 HOOD 无数据；不列 Gamma Flip 数值。</section>
+    <section class="source-note"><strong>研究完整性（数据基准日 2026-10-02，调研日期 2026-10-03）：</strong>图表与图内统计直接按机器可读日收盘序列（Nasdaq 官方历史 API 65 个交易日，2026-07-02 至 2026-10-02）绘制。市值约 $101.4B 为 2026-10-02 收盘口径；52 周区间（Nasdaq $63.52–$153.86 vs OptiView $65.06–$152.46）、做空环比（MarketBeat +1.8% vs Schaeffer's +9.1%）、Goldman Sachs 目标价（$145 vs $142）、Q3 财报日期（MarketBeat 2026-10-27 vs OptiView 2026-11-02，均未获公司确认）等来源分歧均并列标注、不合并为单一确定值；回购约 $664M 为单源未二次核实 ⚠️；MAU 公司未披露，本页以入金客户与投资账户代替、不编造。FINRA 做空为 2026-09-15 结算期，本周无新结算。借券利用率与借券费率无免费公开源，未呈现也未估算。期权结构为 OptiView 单一口径（2026-10-02 15:55 ET 快照，OPRA 延迟数据），FlashAlpha 对 HOOD 无数据；不列 Gamma Flip 数值。</section>
 
-    <footer>数据来源：Nasdaq 官方 API、FINRA（经 MarketBeat 汇总）、公司 Q2 2026 财报（2026-07-29 发布）、OptiView 期权数据（2026-10-01 快照）；截至 2026-10-02 美股收盘。价格卡可刷新实时报价；其余为静态研究快照，不构成证券研究报告或投资建议。</footer>
+    <footer>数据来源：Nasdaq 官方 API、FINRA（经 MarketBeat 汇总）、公司 Q2 2026 财报（2026-07-29 发布）、OptiView 期权数据（2026-10-02 快照）；截至 2026-10-02 美股收盘。价格卡可刷新实时报价；其余为静态研究快照，不构成证券研究报告或投资建议。</footer>
   </main>
 
   <script>
