@@ -6,9 +6,6 @@ name: Update HOOD quote
 # Client-side fallback chain (in-page): quote.json -> Nasdaq direct ->
 # Yahoo Finance -> Stooq (hood.us).
 on:
-  schedule:
-    # 13:00-21:00 UTC covers 09:30-17:00 ET in EDT and 08:00-16:00 ET in EST, Mon-Fri
-    - cron: '*/15 13-21 * * 1-5'
   workflow_dispatch:
 
 permissions:
